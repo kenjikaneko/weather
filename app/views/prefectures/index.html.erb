@@ -1,0 +1,27 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="../citylist.json"></script>
+<h1>Listing prefectures</h1>
+
+<table>
+  <select name="prefecture">
+    <% @prefectures.each do |pref| %>
+      <option value="<%= pref.id %>"><%= pref.name %></option>
+    <% end %>
+  </select>
+
+  <span id="city"></span>
+
+  <% @prefectures.each do |prefecture| %>
+    <tr>
+      <td><%= prefecture.name %></td>
+      <td><%= link_to 'Show', prefecture %></td>
+      <td><%= link_to 'Edit', edit_prefecture_path(prefecture) %></td>
+      <td><%= link_to 'Destroy', prefecture, confirm: 'Are you sure?', method: :delete %></td>
+    </tr>
+  <% end %>
+
+</table>
+
+<br />
+
+<%= link_to 'New Prefecture', new_prefecture_path %>
